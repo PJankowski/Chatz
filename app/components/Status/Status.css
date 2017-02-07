@@ -1,0 +1,15 @@
+.Status {
+  background-color: #757575;
+  height: 16px;
+  width: 16px;
+  display: block;
+  position: absolute;
+  border: 2px solid #2E3136;
+  border-radius: 50%;
+  right: 5px;
+  bottom: 0;
+}
+
+.Status--online {
+  background-color: #66BB6A;
+}

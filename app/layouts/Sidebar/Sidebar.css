@@ -1,0 +1,43 @@
+.Sidebar {
+  width: 20vw;
+  min-width: 250px;
+  background-color: #2E3136;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.Sidebar__profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.Sidebar__welcome {
+  font-size: 1.1em;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+}
+
+.Sidebar__Friends {}
+
+.Sidebar__Friends li {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.Sidebar__Friends li:hover {
+  background-color: rgba(0,0,0,0.3);
+}
+
+.Sidebar__Friends li:last-of-type {
+  margin-bottom: 0;
+}
+
+.Sidebar__Friends__name {
+  color: #FFF;
+  font-size: 1em;
+  letter-spacing: 1px;
+}
