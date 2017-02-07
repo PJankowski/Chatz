@@ -8,6 +8,7 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import IO from 'socket.io';
 import config from './webpack.config';
 import serverConfig from './server/config';
 
@@ -15,6 +16,10 @@ import serverConfig from './server/config';
 import Login from './server/controllers/Auth';
 
 const app = express();
+const server = app.listen('8080', () => {
+  console.log('Listening on port 8080');
+});
+const io = new IO(server);
 
 app.use(bodyParser.json());
 app.use(cookieParser({ secret: 'This is a secret' }));
@@ -51,10 +56,14 @@ mongoose.connect(serverConfig.mongoUri, (err) => {
 
 app.post('/api/login', Login);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+io.on('connection', (socket) => {
+  console.log('Socket connected');
+
+  socket.on('post:message', (message) => {
+    console.log(message);
+  });
 });
 
-app.listen('8080', () => {
-  console.log('Listening on port 8080');
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });

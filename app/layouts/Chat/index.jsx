@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Socket from '../../socket'
 
 import './Chat.css';
 
@@ -40,7 +41,7 @@ class Chat extends Component {
       text: value,
       date: Date.now(),
     };
-    this.props.dispatch(SendMessage(data));
+    Socket.postMessage(data);
   }
 
   render() {
