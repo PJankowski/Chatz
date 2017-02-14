@@ -13,7 +13,7 @@ import config from './webpack.config';
 import serverConfig from './server/config';
 
 import Login from './server/controllers/Auth';
-import { GetUsers, SearchUsers, RequestFriend } from './server/controllers/User';
+import { SearchUsers, RequestFriend } from './server/controllers/User';
 
 const app = express();
 const server = app.listen('8080', () => {
@@ -55,7 +55,6 @@ mongoose.connect(serverConfig.mongoUri, (err) => {
 });
 
 app.post('/api/login', Login);
-app.get('/api/users', GetUsers);
 
 io.on('connection', (socket) => {
   console.log('Socket connected');
