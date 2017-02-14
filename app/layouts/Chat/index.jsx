@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Socket from '../../socket'
 
 import './Chat.css';
 
@@ -29,8 +28,16 @@ class Chat extends Component {
     this.addMessage = this.addMessage.bind(this);
   }
 
+  componentDidMount() {
+    this.props.socket.on('message:added', (message) => {
+      this.setState({
+        messages: [message, ...this.state.messages],
+      });
+    });
+  }
+
   addMessage(value) {
-    const { username, avatar, id } = this.props;
+    const { username, avatar, id } = this.props.user;
     const data = {
       id: Date.now(),
       user: {
@@ -41,11 +48,11 @@ class Chat extends Component {
       text: value,
       date: Date.now(),
     };
-    Socket.postMessage(data);
+    this.props.socket.emit('post:message', data); // eslint-disable-line react/prop-types
   }
 
   render() {
-    const Messages = this.props.messages.map(message =>
+    const Messages = this.state.messages.map(message =>
       <li key={message.id}>{ message.text }</li>,
     );
 
@@ -65,18 +72,20 @@ class Chat extends Component {
 }
 
 Chat.propTypes = {
-  username: React.PropTypes.string,
-  avatar: React.PropTypes.string,
-  id: React.PropTypes.string,
-  dispatch: React.PropTypes.func,
+  user: {
+    username: React.PropTypes.string,
+    avatar: React.PropTypes.string,
+    id: React.PropTypes.string,
+  },
   messages: React.PropTypes.array,
 };
 
 Chat.defaultProps = {
-  username: '',
-  avatar: '',
-  id: '',
-  dispatch: () => {},
+  user: {
+    username: '',
+    id: '',
+    avatar: '',
+  },
   messages: [],
 };
 

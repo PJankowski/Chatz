@@ -13,7 +13,9 @@
     }
   },
   "rules": {
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "no-underscore-dangle": "off",
+    "arrow-body-style": "off"
   },
   "extends": "airbnb"
 }

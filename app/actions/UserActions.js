@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default function UserLogin(user) {
+export function UserLogin(user) {
   return (dispatch) => {
     axios.post('/api/login', { username: user.username, password: user.password })
       .then((data) => {

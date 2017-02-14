@@ -12,8 +12,8 @@ import IO from 'socket.io';
 import config from './webpack.config';
 import serverConfig from './server/config';
 
-
 import Login from './server/controllers/Auth';
+import { GetUsers, SearchUsers, RequestFriend } from './server/controllers/User';
 
 const app = express();
 const server = app.listen('8080', () => {
@@ -55,12 +55,34 @@ mongoose.connect(serverConfig.mongoUri, (err) => {
 });
 
 app.post('/api/login', Login);
+app.get('/api/users', GetUsers);
 
 io.on('connection', (socket) => {
   console.log('Socket connected');
 
+  socket.on('search:users', (q) => {
+    const query = SearchUsers(q);
+
+    query.then((results) => {
+      socket.emit('users:found', results);
+    }, (err) => {
+      socket.emit('error:userSearch', err);
+    });
+  });
+
+  socket.on('user:addFriend', (userId, friendId) => {
+    RequestFriend(userId, friendId)
+      .then((doc) => {
+        console.log(doc);
+        socket.emit('user:addedFriend', doc);
+      }, (err) => {
+        console.log(err);
+        socket.emit('error:addFriend', err);
+      });
+  });
+
   socket.on('post:message', (message) => {
-    console.log(message);
+    io.emit('message:added', message);
   });
 });
 

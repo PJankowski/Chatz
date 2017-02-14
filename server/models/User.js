@@ -11,6 +11,8 @@ const UserSchema = mongoose.Schema({
   messages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Message' }],
 });
 
+UserSchema.index({ username: 'text' });
+
 const User = mongoose.model('User', UserSchema);
 
 export default User;

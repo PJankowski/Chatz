@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 
 import './Sidebar.css';
 
-import SidebarProfile from '../../components/SidebarProfile/index';
-import SidebarFriend from '../../components/SidebarFriend/index';
+import UserSearch from '../../components/UserSearch';
+import SidebarProfile from '../../components/SidebarProfile';
+import SidebarFriend from '../../components/SidebarFriend';
 
 @connect((store) => {
   return {
@@ -29,6 +30,12 @@ class Sidebar extends Component {
         },
       ],
     };
+
+    this.searchUsers = this.searchUsers.bind(this);
+  }
+
+  searchUsers(evt) {
+    this.props.socket.emit('search:users', evt.target.value);
   }
 
   render() {
@@ -41,6 +48,8 @@ class Sidebar extends Component {
 
     return (
       <aside className="Sidebar">
+        <UserSearch socket={this.props.socket} searchUsers={this.searchUsers} />
+
         <SidebarProfile
           name={this.props.first}
           avatar={this.props.avatar}
@@ -56,6 +65,7 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
+  socket: React.PropTypes.object.isRequired,
   first: React.PropTypes.string,
   avatar: React.PropTypes.string,
   status: React.PropTypes.string,

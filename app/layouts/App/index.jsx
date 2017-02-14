@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import IO from 'socket.io-client';
 
 import LoginForm from '../../components/LoginForm';
 import Chat from '../Chat';
@@ -12,10 +13,23 @@ import Sidebar from '../Sidebar';
 })
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      socket: new IO(''),
+    };
+  }
+
+  componentDidMount() {
+    this.state.socket.on('error:addFriend', (err) => {
+      alert(JSON.stringify(err));
+    });
+  }
+
   render() {
     return (
       <div>
-        { this.props.user !== '' ? (<div className="App"><Sidebar /><Chat /></div>) : <LoginForm /> }
+        { this.props.user !== '' ? (<div className="App"><Sidebar socket={this.state.socket} /><Chat socket={this.state.socket} /></div>) : <LoginForm /> }
       </div>
     );
   }
