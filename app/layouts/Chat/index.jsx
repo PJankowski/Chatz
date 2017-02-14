@@ -77,7 +77,6 @@ Chat.propTypes = {
     avatar: React.PropTypes.string,
     id: React.PropTypes.string,
   },
-  messages: React.PropTypes.array,
 };
 
 Chat.defaultProps = {

@@ -15,7 +15,8 @@
   "rules": {
     "import/extensions": "off",
     "no-underscore-dangle": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "react/forbid-prop-types": 0
   },
   "extends": "airbnb"
 }
