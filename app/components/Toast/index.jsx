@@ -6,16 +6,22 @@ import './Toast.css';
 function Toast({ type, status, message, handleClose }) {
   const toastClasses = classnames({
     Toast: true,
-    'Toast--Success': type === 'success',
-    'Toast--Error': type === 'error',
-    'Toast--Warn': type === 'warning',
+    'Toast--Success': type.toLowerCase() === 'success',
+    'Toast--Error': type.toLowerCase() === 'error',
+    'Toast--Warn': type.toLowerCase() === 'warning',
   });
+
+  (() => {
+    setTimeout(() => {
+      handleClose();
+    }, 3500);
+  })();
+
   return (
-    <div className={toastClasses}>
-      <i className="Toast__Close" onClick={handleClose}>X</i>
+    <button className={toastClasses} onClick={handleClose}>
       <h2 className="Toast__Status">{ status.toUpperCase() }</h2>
       <p className="Toast__Message">{ message }</p>
-    </div>
+    </button>
   );
 }
 

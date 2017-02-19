@@ -8,10 +8,8 @@ export default function reducer(state = {
       first: '',
     },
   },
-  error: {
-    status: '',
-    message: '',
-  },
+  friends: [],
+  requests: [],
 }, action) {
   switch (action.type) {
     case 'USER_LOGGED_IN': {

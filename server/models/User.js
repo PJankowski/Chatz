@@ -9,6 +9,7 @@ const UserSchema = mongoose.Schema({
     last: String,
   },
   messages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Message' }],
+  requests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }],
 });
 
 UserSchema.index({ username: 'text' });
