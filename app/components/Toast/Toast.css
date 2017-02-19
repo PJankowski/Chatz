@@ -1,0 +1,80 @@
+.Toast {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  background-color: #66BB6A;
+  padding: 1.2rem;
+  box-shadow: 0 0 4px #999999;
+  border-radius: 7px;
+  animation: fade-in 0.6s ease-in;
+}
+
+.Toast--Success {
+  background-color: #66BB6A;
+}
+
+.Toast--Error {
+  background-color: #EF5350;
+}
+
+.Toast--Warn {
+  background-color: #FDD835;
+}
+
+.Toast--Closed {
+  animation: fade-out 0.6s ease-in-out;
+}
+
+.Toast__Close {
+  position: absolute;
+  top: 6%;
+  right: 8%;
+  cursor: pointer;
+  padding: 5px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in;
+}
+
+.Toast__Close:hover {
+  opacity: 1;
+}
+
+.Toast__Status {
+  font-size: 1.2em;
+  margin-bottom: 0.454545em;
+}
+
+.Toast__Message {
+  font-size: 1em;
+  letter-spacing: 1px;
+}
+
+.Toast__Close,
+.Toast__Status,
+.Toast__Message {
+  color: #FFF;
+}
+
+.Toast__Close,
+.Toast__Status,
+.Toast__Message {
+  text-shadow: 1px 1px 1px rgba(50, 50, 50, 0.45);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

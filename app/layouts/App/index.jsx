@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import IO from 'socket.io-client';
 
 import LoginForm from '../../components/LoginForm';
-import Chat from '../Chat';
 import Sidebar from '../Sidebar';
+import Main from '../Main';
 
 @connect((store) => {
   return {
@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        { this.props.user !== '' ? (<div className="App"><Sidebar socket={this.state.socket} /><Chat socket={this.state.socket} /></div>) : <LoginForm /> }
+        { this.props.user !== '' ? (<div className="App"><Sidebar socket={this.state.socket} /><Main socket={this.state.socket} /></div>) : <LoginForm /> }
       </div>
     );
   }

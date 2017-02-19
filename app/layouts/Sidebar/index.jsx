@@ -30,12 +30,6 @@ class Sidebar extends Component {
         },
       ],
     };
-
-    this.searchUsers = this.searchUsers.bind(this);
-  }
-
-  searchUsers(evt) {
-    this.props.socket.emit('search:users', evt.target.value);
   }
 
   render() {
@@ -48,8 +42,6 @@ class Sidebar extends Component {
 
     return (
       <aside className="Sidebar">
-        <UserSearch socket={this.props.socket} searchUsers={this.searchUsers} />
-
         <SidebarProfile
           name={this.props.first}
           avatar={this.props.avatar}

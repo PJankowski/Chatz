@@ -1,0 +1,47 @@
+.UtilityBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.UserSearch {
+  width: 15%;
+  position: relative;
+}
+
+.UserSearch input {
+  width: 100%;
+  border: 0;
+  padding: 6px 8px;
+  border-radius: 25px;
+  font-size: 0.9em;
+}
+
+.UserSearch__Results {
+  position: absolute;
+  top: 110%;
+  padding: 12px;
+  list-style-type: none;
+  background-color: #FFF;
+  border: 1px solid #333;
+  border-radius: 7px;
+  width: 100%;
+}
+
+.UserSearch__Results li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+}
+
+.UserSearch__Results li button {
+  padding: 0;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

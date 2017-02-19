@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { UserLogin } from '../../actions/UserActions';
 
 import Button from '../Button';
+import Toast from '../Toast';
 
 import './LoginForm.css';
 
@@ -34,6 +35,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="LoginWrapper">
+        <Toast type="error" status="Error" message="This is an error message." />
         <form className="LoginForm" onSubmit={this.login}>
           <h3>Start chatting!</h3>
           <input type="text" placeholder="Username" ref={(ref) => { this.usernameRef = ref; }} />

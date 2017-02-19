@@ -1,7 +1,5 @@
 .Chat {
-  width: calc(100vw - 20%);
-  height: calc(100vh - 80px);
-  margin-top: 80px;
+  height: calc(100vh - 20px);
 }
 
 .Chat__window {

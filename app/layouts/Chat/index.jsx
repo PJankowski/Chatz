@@ -28,14 +28,6 @@ class Chat extends Component {
     this.addMessage = this.addMessage.bind(this);
   }
 
-  componentDidMount() {
-    this.props.socket.on('message:added', (message) => {
-      this.setState({
-        messages: [message, ...this.state.messages],
-      });
-    });
-  }
-
   addMessage(value) {
     const { username, avatar, id } = this.props.user;
     const data = {
