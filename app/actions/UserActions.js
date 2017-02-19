@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function UserLogin(user) {
+export default function UserLogin(user) {
   return (dispatch) => {
     axios.post('/api/login', { username: user.username, password: user.password })
       .then((data) => {
@@ -10,7 +10,18 @@ export function UserLogin(user) {
             username: data.data.username,
             name: { first: 'Paul' },
             avatar: 'https://api.adorable.io/avatars/285/abottwedwefoi.png',
-            status: 'online' } });
+            status: 'online',
+          },
+        });
+      })
+      .catch((err) => {
+        const { status, message } = err.response.data;
+        dispatch({ type: 'USER_LOGIN_ERROR',
+          payload: {
+            status,
+            message,
+          },
+        });
       });
   };
 }

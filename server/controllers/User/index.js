@@ -14,7 +14,7 @@ export function SearchUsers(q) {
     } else {
       User.find({ username: { $regex: q, $options: 'i' } }, (err, users) => {
         if (err) {
-          reject(err);
+          reject({ status: 'Error', message: 'We are sorry. Something went wrong.'});
           return;
         }
         resolve(users);
@@ -31,7 +31,7 @@ export function RequestFriend(userId, friendId) {
 
     request.save((err, doc) => {
       if (err) {
-        reject(err);
+        reject({ status: 'Error', message: 'We are sorry. We can\'t find that person.' });
       } else {
         resolve(doc);
       }

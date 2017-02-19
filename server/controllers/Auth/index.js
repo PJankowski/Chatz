@@ -6,13 +6,13 @@ export default function Login(req, res) {
   const promise = new Promise((resolve, reject) => {
     User.findOne({ username }, (err, doc) => {
       if (err) {
-        reject(err);
+        reject({ status: 'error', message: 'Oops. Something went wrong, please try again.' });
       } else {
         if (!doc) {
-          reject(err);
+          reject({ status: 'error', message: 'Sorry, we couldn\'t find that user.' });
         } else {
           if (password !== doc.password) {
-            reject(err);
+            reject({ status: 'error', message: 'Sorry, we couldn\'t find that user.' });
           } else {
             resolve(doc);
           }

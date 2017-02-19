@@ -8,6 +8,10 @@ export default function reducer(state = {
       first: '',
     },
   },
+  error: {
+    status: '',
+    message: '',
+  },
 }, action) {
   switch (action.type) {
     case 'USER_LOGGED_IN': {
@@ -22,6 +26,16 @@ export default function reducer(state = {
           name: {
             first: name.first,
           },
+        },
+      };
+    }
+    case 'USER_LOGIN_ERROR': {
+      const { status, message } = action.payload;
+      return {
+        ...state,
+        error: {
+          status,
+          message,
         },
       };
     }
