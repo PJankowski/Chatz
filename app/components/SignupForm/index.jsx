@@ -1,22 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { UserLogin } from '../../actions/UserActions';
+import { UserSignup } from '../../actions/UserActions';
 
 import Button from '../Button';
 
-import './LoginForm.css';
+import './SignupForm.css';
 
 @connect(store => store)
 
-class LoginForm extends Component {
+class SignupForm extends Component {
   constructor(props) {
     super(props);
 
-    this.login = this.login.bind(this);
+    this.signup = this.signup.bind(this);
   }
 
-  login(evt) {
+  signup(evt) {
     evt.preventDefault();
 
     const data = {
@@ -24,31 +24,31 @@ class LoginForm extends Component {
       password: this.passwordRef.value,
     };
 
-    this.props.dispatch(UserLogin(data));
+    this.props.dispatch(UserSignup(data));
   }
 
   render() {
     return (
-      <div className="LoginWrapper">
-        <form className="LoginForm" onSubmit={this.login}>
+      <div className="SignupWrapper">
+        <form className="SignupForm" onSubmit={this.signup}>
           <h3>Start chatting!</h3>
           <input type="text" placeholder="Username" ref={(ref) => { this.usernameRef = ref; }} />
           <input type="password" placeholder="Password" ref={(ref) => { this.passwordRef = ref; }} />
-          <Button type="submit" text="Login" />
-          <a href="" onClick={this.props.changeAuthForm}>...Or Signup</a>
+          <Button type="submit" text="Signup" />
+          <a href="" onClick={this.props.changeAuthForm}>...Or Login</a>
         </form>
       </div>
     );
   }
 }
 
-LoginForm.propTypes = {
+SignupForm.propTypes = {
   dispatch: PropTypes.func,
   changeAuthForm: PropTypes.func.isRequired,
 };
 
-LoginForm.defaultProps = {
+SignupForm.defaultProps = {
   dispatch: () => {},
 };
 
-export default LoginForm;
+export default SignupForm;

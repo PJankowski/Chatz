@@ -64,20 +64,11 @@ class Chat extends Component {
 }
 
 Chat.propTypes = {
-  user: {
-    username: React.PropTypes.string,
-    avatar: React.PropTypes.string,
-    id: React.PropTypes.string,
-  },
+  user: React.PropTypes.object,
 };
 
 Chat.defaultProps = {
-  user: {
-    username: '',
-    id: '',
-    avatar: '',
-  },
-  messages: [],
+  user: {},
 };
 
 export default Chat;

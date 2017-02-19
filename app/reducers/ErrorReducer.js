@@ -3,7 +3,7 @@ export default function reducer(state = {
   message: '',
 }, action) {
   switch (action.type) {
-    case 'USER_LOGIN_ERROR': {
+    case 'SET_ERROR': {
       const { status, message } = action.payload;
       return {
         ...state,

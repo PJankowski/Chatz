@@ -9,23 +9,30 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import IO from 'socket.io';
+import morgan from 'morgan';
+import fs from 'fs';
 import config from './webpack.config';
 import serverConfig from './server/config';
 
-import Login from './server/controllers/Auth';
+import { Login, Signup } from './server/controllers/Auth';
 import { SearchUsers, RequestFriend } from './server/controllers/User';
 
+const isDeveloping = process.env.NODE_ENV !== 'production';
 const app = express();
-const server = app.listen('8080', () => {
-  console.log('Listening on port 8080');
+const server = app.listen(serverConfig.port, () => {
+  console.log(`Listening on port ${serverConfig.port}`);
 });
 const io = new IO(server);
 
 app.use(bodyParser.json());
+if (!isDeveloping) {
+  const accessLogStream = fs.createWriteStream(path.join(__dirname, 'server/logs/access.log'), { flags: 'a' });
+  app.use(morgan('combined', { stream: accessLogStream }));
+} else {
+  app.use(morgan('combined'));
+}
 app.use(cookieParser({ secret: 'This is a secret' }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-const isDeveloping = process.env.NODE_ENV !== 'production';
 
 if (isDeveloping) {
   const compiler = webpack(config);
@@ -55,6 +62,7 @@ mongoose.connect(serverConfig.mongoUri, (err) => {
 });
 
 app.post('/api/login', Login);
+app.post('/api/signup', Signup);
 
 io.on('connection', (socket) => {
   console.log('Socket connected');

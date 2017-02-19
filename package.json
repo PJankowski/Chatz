@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.js --exec babel-node"
+    "start": "nodemon server.js --exec babel-node",
+    "lint": "eslint app/**/*.js app/**/*.jsx server.js server/**/*.js"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -22,6 +23,7 @@
     "express": "^4.14.1",
     "file-loader": "^0.9.0",
     "mongoose": "^4.8.1",
+    "morgan": "^1.8.1",
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

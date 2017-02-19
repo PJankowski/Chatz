@@ -29,13 +29,18 @@ export default function reducer(state = {
         },
       };
     }
-    case 'USER_LOGIN_ERROR': {
-      const { status, message } = action.payload;
+    case 'USER_SIGNUP': {
+      const { id, username, status, avatar, name } = action.payload;
       return {
         ...state,
-        error: {
+        user: {
+          id,
+          username,
           status,
-          message,
+          avatar,
+          name: {
+            first: name.first,
+          },
         },
       };
     }

@@ -5,6 +5,7 @@ import IO from 'socket.io-client';
 import clearError from '../../actions/ErrorActions';
 
 import LoginForm from '../../components/LoginForm';
+import SignupForm from '../../components/SignupForm';
 import Sidebar from '../Sidebar';
 import Main from '../Main';
 
@@ -22,14 +23,18 @@ class App extends Component {
     super(props);
     this.state = {
       socket: new IO(''),
+      isLogin: true,
+      isSignup: false,
     };
 
     this.handleClose = this.handleClose.bind(this);
+    this.changeAuthForm = this.changeAuthForm.bind(this);
   }
 
-  componentDidMount() {
-    this.state.socket.on('error:addFriend', (err) => {
-      alert(JSON.stringify(err));
+  changeAuthForm() {
+    this.setState({
+      isLogin: !this.state.isLogin,
+      isSignup: !this.state.isSignup,
     });
   }
 
@@ -38,6 +43,15 @@ class App extends Component {
   }
 
   render() {
+    let auth;
+    if (this.state.isLogin) {
+      auth = <LoginForm changeAuthForm={this.changeAuthForm} />;
+    } else if (this.state.isSignup) {
+      auth = <SignupForm changeAuthForm={this.changeAuthForm} />;
+    } else {
+      auth = null;
+    }
+
     return (
       <div>
         { this.props.error.status !== '' ?
@@ -50,8 +64,13 @@ class App extends Component {
         : null }
         {
           this.props.user !== '' ?
-          (<div className="App"><Sidebar socket={this.state.socket} /><Main socket={this.state.socket} /></div>)
-          : <LoginForm />
+          (
+            <div className="App">
+              <Sidebar socket={this.state.socket} />
+              <Main socket={this.state.socket} />
+            </div>
+          )
+          : auth
         }
       </div>
     );

@@ -14,7 +14,7 @@ export function SearchUsers(q) {
     } else {
       User.find({ username: { $regex: q, $options: 'i' } }, (err, users) => {
         if (err) {
-          reject({ status: 'Error', message: 'We are sorry. Something went wrong.'});
+          reject({ status: 'Error', message: 'We are sorry. Something went wrong.' });
           return;
         }
         resolve(users);
