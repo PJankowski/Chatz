@@ -4,7 +4,7 @@
   width: 100vw;
   justify-content: center;
   align-items: center;
-  background-color: #36393E;
+  background-color: var(--outsideColor);
 }
 
 .SignupForm {

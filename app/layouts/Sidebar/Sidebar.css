@@ -1,7 +1,7 @@
 .Sidebar {
   width: 20vw;
   min-width: 250px;
-  background-color: #2E3136;
+  background-color: var(--outsideColor);
   height: 100vh;
   overflow-y: scroll;
 }

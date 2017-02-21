@@ -31,7 +31,9 @@ class App extends Component {
     this.changeAuthForm = this.changeAuthForm.bind(this);
   }
 
-  changeAuthForm() {
+  changeAuthForm(evt) {
+    evt.preventDefault();
+
     this.setState({
       isLogin: !this.state.isLogin,
       isSignup: !this.state.isSignup,

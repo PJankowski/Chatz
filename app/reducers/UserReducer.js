@@ -7,13 +7,14 @@ export default function reducer(state = {
     name: {
       first: '',
     },
+    token: '',
   },
   friends: [],
   requests: [],
 }, action) {
   switch (action.type) {
     case 'USER_LOGGED_IN': {
-      const { id, username, status, avatar, name } = action.payload;
+      const { id, username, status, avatar, name, token } = action.payload;
       return {
         ...state,
         user: {
@@ -24,6 +25,7 @@ export default function reducer(state = {
           name: {
             first: name.first,
           },
+          token,
         },
       };
     }

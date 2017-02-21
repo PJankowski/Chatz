@@ -19,9 +19,11 @@ import { SearchUsers, RequestFriend } from './server/controllers/User';
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const app = express();
+
 const server = app.listen(serverConfig.port, () => {
   console.log(`Listening on port ${serverConfig.port}`);
 });
+
 const io = new IO(server);
 
 app.use(bodyParser.json());
@@ -42,9 +44,9 @@ if (isDeveloping) {
     stats: {
       colors: true,
       ash: false,
-      timings: true,
+      timings: false,
       chunks: true,
-      chunkModules: true,
+      chunkModules: false,
       modules: false,
     },
   });
@@ -52,6 +54,8 @@ if (isDeveloping) {
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
 }
+
+mongoose.promise = global.Promise;
 
 mongoose.connect(serverConfig.mongoUri, (err) => {
   if (err) {

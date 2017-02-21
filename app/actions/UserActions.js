@@ -1,16 +1,22 @@
 import axios from 'axios';
+import Storage from '../utils/storage';
 
 export function UserLogin(user) {
   return (dispatch) => {
     axios.post('/api/login', { username: user.username, password: user.password })
       .then((data) => {
+        const { _id, username } = data.data.user;
+
+        Storage.set('chatz_token', data.data.token);
+
         dispatch({ type: 'USER_LOGGED_IN',
           payload: {
-            id: data.data._id,
-            username: data.data.username,
+            id: _id,
+            username,
             name: { first: 'Paul' },
             avatar: 'https://api.adorable.io/avatars/285/abottwedwefoi.png',
             status: 'online',
+            token: data.data.token,
           },
         });
       })

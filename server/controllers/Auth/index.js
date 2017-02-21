@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import User from '../../models/User';
 
 export function Login(req, res) {
@@ -12,7 +13,12 @@ export function Login(req, res) {
       } else if (password !== doc.password) {
         reject({ status: 'Error', message: 'Sorry, we couldn\'t find that user.' });
       } else {
-        resolve(doc);
+        const token = jwt.sign({
+          exp: Math.floor(Date.now() / 1000) + (60 * 60),
+          data: doc._id,
+        },
+        'shhh');
+        resolve({ user: doc, token });
       }
     });
   });
