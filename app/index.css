@@ -1,7 +1,18 @@
+p,
+input[type="text"],
+a,
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
+}
+
 .App {
   display: flex;
-  background-color: #36393E;
+  background-color: var(--backgroundColor);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  color: var(--text);
 }

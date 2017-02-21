@@ -1,5 +1,5 @@
 button {
-  background-color: #EF5350;
+  background-color: var(--orange);
   outline: 0;
   border: 0;
   color: #FFF;
@@ -11,5 +11,5 @@ button {
 }
 
 button:hover {
-  background-color: #E53935;
+  background-color: color(var(--orange) b(+ 7%));
 }

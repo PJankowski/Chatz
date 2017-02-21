@@ -16,7 +16,6 @@
 }
 
 .LoginForm h3 {
-  color: hsla(0,0%,100%,.7);
   font-size: 1.2em;
   text-align: center;
   letter-spacing: 1px;
@@ -29,5 +28,4 @@
   outline: 0;
   background-color: hsla(0,0%,100%,.06);
   font-size: 0.8rem;
-  color: hsla(0,0%,100%,.7);
 }
