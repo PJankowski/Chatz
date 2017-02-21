@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IO from 'socket.io-client';
 
-import clearError from '../../actions/ErrorActions';
+import { setError, clearError } from '../../actions/ErrorActions';
 
 import LoginForm from '../../components/LoginForm';
 import SignupForm from '../../components/SignupForm';
@@ -29,6 +29,16 @@ class App extends Component {
 
     this.handleClose = this.handleClose.bind(this);
     this.changeAuthForm = this.changeAuthForm.bind(this);
+  }
+
+  componentDidMount() {
+    this.state.socket.on('client:error', (err) => {
+      this.props.dispatch(setError(err));
+    });
+
+    this.state.socket.on('user:addedFriend', (data) => {
+      console.log(data);
+    });
   }
 
   changeAuthForm(evt) {

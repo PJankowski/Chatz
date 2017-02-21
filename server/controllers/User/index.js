@@ -27,15 +27,18 @@ export function SearchUsers(q) {
 
 export function RequestFriend(userId, friendId) {
   const promise = new Promise((resolve, reject) => {
-    const request = new FriendRequest({ user_id: userId, friend_id: friendId });
-
-    request.save((err, doc) => {
-      if (err) {
-        reject({ status: 'Error', message: 'We are sorry. We can\'t find that person.' });
-      } else {
-        resolve(doc);
-      }
+    const q = new FriendRequest({
+      user_id: userId,
+      friend_id: friendId,
     });
+
+    q.save()
+      .then((doc) => {
+        resolve(doc);
+      })
+      .catch(() => {
+        reject({ status: 'Error', message: 'We are sorry. We can\'t find that person.' });
+      });
   });
 
   return promise;
