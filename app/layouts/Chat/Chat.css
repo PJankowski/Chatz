@@ -14,11 +14,11 @@
 
 .MessageForm__input {
   width: 100%;
-  border: 2px solid hsla(0,0%,100%,.2);
-  background-color: hsla(0,0%,100%,.06);
+  border: 2px solid hsla(0, 0%, 100%, 0.2);
+  background-color: hsla(0, 0%, 100%, 0.06);
   font-size: 1.1em;
   padding: 12px;
   outline: none;
   border-radius: 3px;
-  color: hsla(0,0%,100%,.7);
+  color: hsla(0, 0%, 100%, 0.7);
 }

@@ -15,11 +15,9 @@
 
 .Sidebar__welcome {
   font-size: 1.1em;
-  color: #FFFFFF;
+  color: #fff;
   letter-spacing: 1px;
 }
-
-.Sidebar__Friends {}
 
 .Sidebar__Friends li {
   display: flex;
@@ -29,7 +27,7 @@
 }
 
 .Sidebar__Friends li:hover {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .Sidebar__Friends li:last-of-type {
@@ -37,7 +35,7 @@
 }
 
 .Sidebar__Friends__name {
-  color: #FFF;
+  color: #fff;
   font-size: 1em;
   letter-spacing: 1px;
 }

@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    require('stylelint'),
     require('postcss-cssnext')({
       features: {
         customProperties: {

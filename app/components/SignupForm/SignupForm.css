@@ -16,18 +16,18 @@
 }
 
 .SignupForm h3 {
-  color: hsla(0,0%,100%,.7);
+  color: hsla(0, 0%, 100%, 0.7);
   font-size: 1.2em;
   text-align: center;
   letter-spacing: 1px;
 }
 
 .SignupForm input {
-  border: 1px solid hsla(0,0%,100%,.2);
+  border: 1px solid hsla(0, 0%, 100%, 0.2);
   padding: 1.2em;
   border-radius: 25px;
   outline: 0;
-  background-color: hsla(0,0%,100%,.06);
+  background-color: hsla(0, 0%, 100%, 0.06);
   font-size: 0.8rem;
-  color: hsla(0,0%,100%,.7);
+  color: hsla(0, 0%, 100%, 0.7);
 }

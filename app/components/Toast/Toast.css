@@ -2,9 +2,9 @@
   position: absolute;
   top: 5%;
   right: 3%;
-  background-color: #6ac38a;
+  background-color: var(--green);
   padding: 1.2rem;
-  box-shadow: 0 0 4px #999999;
+  box-shadow: 0 0 4px #999;
   border-radius: 7px;
   transition: background-color 0.3s ease-in-out;
   animation: fade-in 0.6s ease-in;
@@ -50,7 +50,7 @@
 
 .Toast__Status,
 .Toast__Message {
-  color: #FFF;
+  color: #fff;
   text-shadow: 1px 1px 1px rgba(50, 50, 50, 0.45);
   text-align: left;
 }
@@ -59,6 +59,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -68,6 +69,7 @@
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
