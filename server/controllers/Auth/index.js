@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import serverConfig from '../../config';
 import User from '../../models/User';
 
 export function Login(req, res) {
@@ -17,7 +18,7 @@ export function Login(req, res) {
           exp: Math.floor(Date.now() / 1000) + (60 * 60),
           data: doc._id,
         },
-        'shhh');
+        serverConfig.jwt_secret);
         resolve({ user: doc, token });
       }
     });
