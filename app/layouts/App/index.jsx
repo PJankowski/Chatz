@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import IO from 'socket.io-client';
 
 import { setError, clearError } from '../../actions/ErrorActions';
+import { GetUser } from '../../actions/UserActions';
 
 import LoginForm from '../../components/LoginForm';
 import SignupForm from '../../components/SignupForm';
 import Sidebar from '../Sidebar';
 import Main from '../Main';
-
 import Toast from '../../components/Toast';
+
+import Storage from '../../utils/storage';
 
 @connect((store) => {
   return {
@@ -32,6 +34,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const token = Storage.get('chatz_token');
+    if (token) {
+      this.props.dispatch(GetUser(token));
+    }
+
     this.state.socket.on('client:error', (err) => {
       this.props.dispatch(setError(err));
     });

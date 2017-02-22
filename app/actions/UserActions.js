@@ -1,6 +1,29 @@
 import axios from 'axios';
 import Storage from '../utils/storage';
 
+export function GetUser(token) {
+  return (dispatch) => {
+    axios.post('/api/user', { token })
+      .then((data) => {
+        const { _id, username } = data.data;
+
+        dispatch({ type: 'USER_LOGGED_IN',
+          payload: {
+            id: _id,
+            username,
+            name: { first: 'Paul' },
+            avatar: 'https://api.adorable.io/avatars/285/abottwedwefoi.png',
+            status: 'online',
+            token: data.data.token,
+          },
+        });
+      })
+      .catch(() => {
+        Storage.remove('chatz_token');
+      });
+  };
+}
+
 export function UserLogin(user) {
   return (dispatch) => {
     axios.post('/api/login', { username: user.username, password: user.password })

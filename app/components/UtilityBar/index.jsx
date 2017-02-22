@@ -47,6 +47,10 @@ class UtilityBar extends Component {
           searchUsers={this.searchUsers}
           addFriend={this.addFriend}
         />
+
+        <a href="#">
+          <i className="material-icons">face</i>
+        </a>
       </header>
     );
   }
