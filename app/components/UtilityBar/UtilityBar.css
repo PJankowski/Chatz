@@ -45,3 +45,22 @@
   align-items: center;
   justify-content: center;
 }
+
+.face-wrapper {
+  margin-left: 1em;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  position: relative;
+  opacity: 0.75;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.face-wrapper i {
+  font-size: 1.8em;
+  line-height: 32px;
+}

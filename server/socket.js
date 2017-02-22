@@ -16,7 +16,7 @@ export default function Socket(io) {
       const request = RequestFriend(data.userId, data.friendId);
 
       request.then((doc) => {
-        socket.emit('user:addedFriend', doc);
+        socket.emit('new:notification', doc);
       }, (err) => {
         socket.emit('client:error', err);
       });

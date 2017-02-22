@@ -42,10 +42,6 @@ class App extends Component {
     this.state.socket.on('client:error', (err) => {
       this.props.dispatch(setError(err));
     });
-
-    this.state.socket.on('user:addedFriend', (data) => {
-      console.log(data);
-    });
   }
 
   changeAuthForm(evt) {

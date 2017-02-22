@@ -3,11 +3,15 @@ import { connect } from 'react-redux';
 
 import './UtilityBar.css';
 
+import SetNotification from '../../actions/NotificationActions';
+
 import UserSearch from '../UserSearch';
+import UserFace from '../UserFace';
 
 @connect((store) => {
   return {
     user: store.user.user.id,
+    notifications: store.notifications.notifications,
   };
 })
 
@@ -24,6 +28,10 @@ class UtilityBar extends Component {
   }
 
   componentDidMount() {
+    this.props.socket.on('new:notification', (notification) => {
+      this.props.dispatch(SetNotification(notification));
+    });
+
     this.props.socket.on('users:found', (users) => {
       this.setState({
         users,
@@ -48,21 +56,23 @@ class UtilityBar extends Component {
           addFriend={this.addFriend}
         />
 
-        <a href="#">
-          <i className="material-icons">face</i>
-        </a>
+        <UserFace notifications={this.props.notifications} />
       </header>
     );
   }
 }
 
 UtilityBar.propTypes = {
-  user: React.PropTypes.string,
   socket: React.PropTypes.object.isRequired,
+  user: React.PropTypes.string,
+  notifications: React.PropTypes.array,
+  dispatch: React.PropTypes.func,
 };
 
 UtilityBar.defaultProps = {
   user: '',
+  notifications: [],
+  dispatch: () => {},
 };
 
 export default UtilityBar;

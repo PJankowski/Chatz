@@ -1,0 +1,10 @@
+.Notification {
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  border-radius: 50%;
+  background-color: var(--green);
+  font-size: 0.8em;
+}

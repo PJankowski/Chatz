@@ -8,8 +8,6 @@ export default function DB() {
   mongoose.connect(serverConfig.mongoUri, (err) => {
     if (err) {
       writeConnectionError(err);
-    } else {
-      console.log('DB Connected');
     }
   });
 }
