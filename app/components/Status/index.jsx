@@ -1,10 +1,17 @@
 import React from 'react';
+import classnames from 'classnames';
 
 import './Status.css';
 
 function Status({ status }) {
+  const classes = classnames({
+    Status: true,
+    'Status--online': status === 'online',
+    'Status--away': status === 'away',
+  });
+
   return (
-    <span className="Status Status--online" />
+    <span className={classes} />
   );
 }
 

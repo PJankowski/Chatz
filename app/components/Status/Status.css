@@ -13,3 +13,7 @@
 .Status--online {
   background-color: var(--green);
 }
+
+.Status--away {
+  background-color: var(--yellow);
+}

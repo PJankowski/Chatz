@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon --trace-warnings server --ignore *.test.js --exec babel-node",
-    "lint": "eslint app/**/*.js app/**/*.jsx server.js server/**/*.js",
+    "lint": "eslint app/**/*.js app/**/*.jsx server/**/*.js",
     "test": "mocha --compilers js:babel-register server/**/*.test.js app/**/*.test.js",
     "build": "babel server -d dist && webpack -p && mkdir dist/logs && touch dist/logs/database.log && touch dist/logs/access.log",
     "prod": "NODE_ENV=production node dist",

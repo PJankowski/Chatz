@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import './Sidebar.css';
 
-import UserSearch from '../../components/UserSearch';
 import SidebarProfile from '../../components/SidebarProfile';
 import SidebarFriend from '../../components/SidebarFriend';
 
@@ -23,10 +22,12 @@ class Sidebar extends Component {
         {
           avatar: 'https://api.adorable.io/avatars/285/abott.png',
           name: 'DJ Brady',
+          status: 'away',
         },
         {
           avatar: 'https://api.adorable.io/avatars/285/abottwedwefoi.png',
           name: 'SweatyyAF',
+          status: 'online',
         },
       ],
     };
@@ -37,7 +38,14 @@ class Sidebar extends Component {
     let key;
     const Friends = this.state.friends.map((friend) => {
       key = count += 1;
-      return <SidebarFriend key={key} name={friend.name} avatar={friend.avatar} />;
+      return (
+        <SidebarFriend
+          key={key}
+          name={friend.name}
+          avatar={friend.avatar}
+          status={friend.status}
+        />
+      );
     });
 
     return (
@@ -57,7 +65,6 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  socket: React.PropTypes.object.isRequired,
   first: React.PropTypes.string,
   avatar: React.PropTypes.string,
   status: React.PropTypes.string,

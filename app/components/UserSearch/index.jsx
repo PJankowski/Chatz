@@ -13,7 +13,7 @@ function UserSearch({ users, searchUsers, addFriend, startSearching, stopSearchi
     <div className={wrapper}>
       <input type="text" onChange={searchUsers} onFocus={startSearching} onBlur={stopSearching} placeholder="Search Users" />
 
-      { users.length > 0 ?
+      { users.length > 0 && isSearching ?
         <UserSearchResults users={users} addFriend={addFriend} />
       : null }
     </div>

@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import './Chat.css';
 
-import SendMessage from '../../actions/MessageActions';
-
 import MessageForm from '../../components/MessageForm/index';
 
 @connect((store) => {
