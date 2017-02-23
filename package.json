@@ -11,6 +11,7 @@
     "lint": "eslint app/**/*.js app/**/*.jsx server.js server/**/*.js",
     "test": "mocha --compilers js:babel-register server/**/*.test.js app/**/*.test.js",
     "build": "babel server -d dist && webpack -p",
+    "prod": "node dist",
     "postinstall": "babel server -d dist && webpack -p"
   },
   "dependencies": {
