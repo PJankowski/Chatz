@@ -12,7 +12,7 @@
     "test": "mocha --compilers js:babel-register server/**/*.test.js app/**/*.test.js",
     "build": "babel server -d dist && webpack -p && mkdir dist/logs && touch dist/logs/database.log && touch dist/logs/access.log",
     "prod": "NODE_ENV=production node dist",
-    "postinstall": "babel server -d dist && webpack -p"
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "autoprefixer": "^6.7.3",
