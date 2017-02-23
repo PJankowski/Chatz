@@ -21,8 +21,11 @@ class UtilityBar extends Component {
 
     this.state = {
       users: [],
+      isSearching: false,
     };
 
+    this.startSearching = this.startSearching.bind(this);
+    this.stopSearching = this.stopSearching.bind(this);
     this.searchUsers = this.searchUsers.bind(this);
     this.addFriend = this.addFriend.bind(this);
   }
@@ -36,6 +39,18 @@ class UtilityBar extends Component {
       this.setState({
         users,
       });
+    });
+  }
+
+  startSearching() {
+    this.setState({
+      isSearching: true,
+    });
+  }
+
+  stopSearching() {
+    this.setState({
+      isSearching: false,
     });
   }
 
@@ -54,6 +69,9 @@ class UtilityBar extends Component {
           users={this.state.users}
           searchUsers={this.searchUsers}
           addFriend={this.addFriend}
+          isSearching={this.state.isSearching}
+          startSearching={this.startSearching}
+          stopSearching={this.stopSearching}
         />
 
         <UserFace notifications={this.props.notifications} />
