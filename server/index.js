@@ -10,11 +10,11 @@ import IO from 'socket.io';
 import morgan from 'morgan';
 import fs from 'fs';
 
-import config from './webpack.config';
-import serverConfig from './server/config';
-import DB from './server/db';
-import routes from './server/routes';
-import Socket from './server/socket';
+import config from '../webpack.config';
+import serverConfig from './config';
+import DB from './db';
+import routes from './routes';
+import Socket from './socket';
 
 const app = express();
 const server = app.listen(serverConfig.port, () => {
@@ -23,7 +23,7 @@ const server = app.listen(serverConfig.port, () => {
 const io = new IO(server);
 
 if (!serverConfig.isDeveloping) {
-  const accessLogStream = fs.createWriteStream(path.join(__dirname, 'server/logs/access.log'), { flags: 'a' });
+  const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'), { flags: 'a' });
   app.use(morgan('combined', { stream: accessLogStream }));
 } else {
   app.use(morgan('combined'));
@@ -31,7 +31,7 @@ if (!serverConfig.isDeveloping) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser({ secret: 'This is a secret' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 if (serverConfig.isDeveloping) {
   const compiler = webpack(config);
