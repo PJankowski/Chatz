@@ -1,15 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 
-function UserSearch({ users, searchUsers, addFriend, startSearching, stopSearching, isSearching }) {
-  const Users = users.map((user) => {
-    return (
-      <li key={user._id}>{user.username}
-        <button onClick={() => addFriend(user._id)}>+</button>
-      </li>
-    );
-  });
+import UserSearchResults from '../UserSearchResults';
 
+function UserSearch({ users, searchUsers, addFriend, startSearching, stopSearching, isSearching }) {
   const wrapper = classnames({
     UserSearch: true,
     isSearching,
@@ -20,9 +14,8 @@ function UserSearch({ users, searchUsers, addFriend, startSearching, stopSearchi
       <input type="text" onChange={searchUsers} onFocus={startSearching} onBlur={stopSearching} placeholder="Search Users" />
 
       { users.length > 0 ?
-        <ul className="UserSearch__Results">
-          { Users }
-        </ul> : null }
+        <UserSearchResults users={users} addFriend={addFriend} />
+      : null }
     </div>
   );
 }
