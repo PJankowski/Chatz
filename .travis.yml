@@ -1,3 +1,10 @@
 language: node_js
 node_js:
-- '7.5.0'
+- 7.5.0
+deploy:
+  provider: heroku
+  api_key:
+    secure: S4Z/4KUCFVFZ3M/tQ0Wk67Wi0wNG7B1ffr8TFCfnjufqaRyik0x+bCJjHdvQL5V/iere8KYQQYgfkD+jdfGPDG70MsrdmYPna8OpE4N6S0WENn0Zc8iB18wA36xs2W88KAH0mnglpQ6heznA8pZvXzHE00+dDtyflnHp/rhmAlOvDNaBwqFn0Nt0iOsm1Jg0ePtxAr9tK0tsSxMUxIcAVI8HuQ+TWpGZ5JgIseBAo4dr+jykhitLJo1s5Q0jmgQ+q5Prl/am/9NWTaUBO+eAqdO/MstXngg6n4BspB/3vSC668pP/lFm9rqKHpQGA6VCXdUIR1Fpfa21KrZij5TS7hbVUtBEWzr/j4cOztDXkEs8svwHqGyN6XRdAlcXfU3OGCwuPhhnlIg9zlyQAJPaI5aArtOs4rnlhJD8N4HEE2MFQqAOpUGaMH4BPVZJNQh6s3PPWFfdCVKM6Nbv4vsOny7sP730MlFmbVltyQZoxWkmgPMVgmk6fNXiTPvgIBl8wiuTpK7etR5qL6QQNfeCZOgf5MLNpcadBrpNHpXo7j2RbMOFg83Ne6LO+gY0RPAYf3nOUGMI+ryYRy95KmPFYN3lJ0h6XXOBXtZ0mlMIkyPC4kl3yjSeAfMWm7kAyuE+by+jImbyf0w4qHHwMPyHsuRnuycNtZe/noodWe2BC2s=
+  app: aqueous-cove-35497
+  on:
+    repo: PJankowski/Chatz
