@@ -14,7 +14,7 @@ export default function reducer(state = {
 }, action) {
   switch (action.type) {
     case 'USER_LOGGED_IN': {
-      const { id, username, status, avatar, name, token } = action.payload;
+      const { id, username, status, avatar, name, token, requests } = action.payload;
       return {
         ...state,
         user: {
@@ -27,6 +27,7 @@ export default function reducer(state = {
           },
           token,
         },
+        requests: [...state.requests, requests],
       };
     }
     case 'USER_SIGNUP': {

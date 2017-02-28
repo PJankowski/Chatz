@@ -6,6 +6,7 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import session from 'express-session';
 import IO from 'socket.io';
 import morgan from 'morgan';
 import fs from 'fs';
@@ -30,7 +31,12 @@ if (!serverConfig.isDeveloping) {
 }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser({ secret: 'This is a secret' }));
+app.use(cookieParser('This is a secret'));
+app.use(session({
+  secret: 'This is a secret',
+  resave: true,
+  saveUninitialized: false,
+}));
 app.use(express.static(path.join(__dirname, '../public')));
 
 if (serverConfig.isDeveloping) {

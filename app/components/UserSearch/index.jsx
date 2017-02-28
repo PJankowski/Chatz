@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import UserSearchResults from '../UserSearchResults';
 
-function UserSearch({ users, searchUsers, addFriend, startSearching, stopSearching, isSearching }) {
+function UserSearch({ users, searchUsers, addFriend, startSearching, isSearching }) {
   const wrapper = classnames({
     UserSearch: true,
     isSearching,
@@ -11,7 +11,7 @@ function UserSearch({ users, searchUsers, addFriend, startSearching, stopSearchi
 
   return (
     <div className={wrapper}>
-      <input type="text" onChange={searchUsers} onFocus={startSearching} onBlur={stopSearching} placeholder="Search Users" />
+      <input type="text" onChange={searchUsers} onFocus={startSearching} placeholder="Search Users" />
 
       { users.length > 0 && isSearching ?
         <UserSearchResults users={users} addFriend={addFriend} />
@@ -25,7 +25,6 @@ UserSearch.propTypes = {
   searchUsers: React.PropTypes.func.isRequired,
   addFriend: React.PropTypes.func.isRequired,
   startSearching: React.PropTypes.func.isRequired,
-  stopSearching: React.PropTypes.func.isRequired,
   isSearching: React.PropTypes.bool.isRequired,
 };
 

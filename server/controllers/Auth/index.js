@@ -6,7 +6,9 @@ export function Login(req, res) {
   const { username, password } = req.body;
 
   const promise = new Promise((resolve, reject) => {
-    User.findOne({ username }, (err, doc) => {
+    User.findOne({ username })
+    .populate('requests')
+    .exec((err, doc) => {
       if (err) {
         reject({ status: 'Error', message: 'Oops. Something went wrong, please try again.' });
       } else if (!doc) {
@@ -25,6 +27,7 @@ export function Login(req, res) {
   });
 
   promise.then((doc) => {
+    req.session.user = doc;
     res.status(200).json(doc);
   }, (err) => {
     res.status(403).json(err);
@@ -45,6 +48,7 @@ export function Signup(req, res) {
   });
 
   promise.then((doc) => {
+    req.session.user = doc;
     res.status(200).json(doc);
   }, (err) => {
     res.status(403).json(err);

@@ -8,7 +8,9 @@ export function GetUser(req, res) {
   const promise = new Promise((resolve, reject) => {
     const data = jwt.decode(token);
 
-    User.findOne({ _id: data.data }, (err, doc) => {
+    User.findOne({ _id: data.data })
+    .populate('requests')
+    .exec((err, doc) => {
       if (err) {
         reject(err);
       } else if (!doc) {
@@ -20,6 +22,7 @@ export function GetUser(req, res) {
   });
 
   promise.then((user) => {
+    req.session.user = user;
     res.status(200).json(user);
   }, (err) => {
     res.status(403).json(err);
@@ -53,7 +56,18 @@ export function RequestFriend(userId, friendId) {
 
     q.save()
       .then((doc) => {
-        resolve(doc);
+        User.findById(userId, (err, user) => {
+          if (err) {
+            reject({ status: 'Error', message: 'We are sorry. Something went wrong.' });
+          } else {
+            user.requests.push(doc._id);
+
+            user.save()
+            .then(() => {
+              resolve(doc);
+            });
+          }
+        });
       })
       .catch(() => {
         reject({ status: 'Error', message: 'We are sorry. We can\'t find that person.' });

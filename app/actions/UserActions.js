@@ -5,7 +5,7 @@ export function GetUser(token) {
   return (dispatch) => {
     axios.post('/api/user', { token })
       .then((data) => {
-        const { _id, username } = data.data;
+        const { _id, username, requests } = data.data;
 
         dispatch({ type: 'USER_LOGGED_IN',
           payload: {
@@ -15,6 +15,7 @@ export function GetUser(token) {
             avatar: 'https://api.adorable.io/avatars/285/abottwedwefoi.png',
             status: 'online',
             token: data.data.token,
+            requests,
           },
         });
       })
@@ -28,7 +29,7 @@ export function UserLogin(user) {
   return (dispatch) => {
     axios.post('/api/login', { username: user.username, password: user.password })
       .then((data) => {
-        const { _id, username } = data.data.user;
+        const { _id, username, requests } = data.data.user;
 
         Storage.set('chatz_token', data.data.token);
 
@@ -40,6 +41,7 @@ export function UserLogin(user) {
             avatar: 'https://api.adorable.io/avatars/285/abottwedwefoi.png',
             status: 'online',
             token: data.data.token,
+            requests,
           },
         });
       })

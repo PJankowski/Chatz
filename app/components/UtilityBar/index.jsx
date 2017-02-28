@@ -11,7 +11,7 @@ import UserFace from '../UserFace';
 @connect((store) => {
   return {
     user: store.user.user.id,
-    notifications: store.notifications.notifications,
+    requests: store.user.requests,
   };
 })
 
@@ -74,7 +74,7 @@ class UtilityBar extends Component {
           stopSearching={this.stopSearching}
         />
 
-        <UserFace notifications={this.props.notifications} />
+        <UserFace notifications={this.props.requests} />
       </header>
     );
   }
@@ -83,13 +83,13 @@ class UtilityBar extends Component {
 UtilityBar.propTypes = {
   socket: React.PropTypes.object.isRequired,
   user: React.PropTypes.string,
-  notifications: React.PropTypes.array,
+  requests: React.PropTypes.array,
   dispatch: React.PropTypes.func,
 };
 
 UtilityBar.defaultProps = {
   user: '',
-  notifications: [],
+  requests: [],
   dispatch: () => {},
 };
 
