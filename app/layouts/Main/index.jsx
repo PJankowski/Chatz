@@ -3,7 +3,7 @@ import React from 'react';
 import './Main.css';
 
 import Chat from '../Chat';
-import UtilityBar from '../../components/UtilityBar';
+import UtilityBar from '../UtilityBar';
 
 function Main({ socket }) {
   return (

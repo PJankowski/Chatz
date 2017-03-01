@@ -1,0 +1,22 @@
+.Notifications {
+  position: absolute;
+  padding: 20px;
+  right: 10%;
+  width: 15vw;
+  top: 100%;
+  background-color: #353740;
+  border: 2px solid var(--inputBorder);
+  border-radius: 7px;
+}
+
+.Notifications__List {
+  list-style-type: none;
+}
+
+.Notifications__List__Item {
+  margin-bottom: 1em;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

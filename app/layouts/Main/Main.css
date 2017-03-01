@@ -1,4 +1,10 @@
 .Main {
-  width: calc(100vw - 20%);
-  height: calc(100vh - 80px);
+  width: 100vw;
+}
+
+@media screen and (min-width: 640px) {
+  .Main {
+    width: calc(100vw - 20%);
+    height: calc(100vh - 80px);
+  }
 }

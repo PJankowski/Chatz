@@ -5,8 +5,8 @@ import './UtilityBar.css';
 
 import SetNotification from '../../actions/NotificationActions';
 
-import UserSearch from '../UserSearch';
-import UserFace from '../UserFace';
+import UserSearch from '../../components/UserSearch';
+import NotificationWrapper from '../../components/NotificationWrapper';
 
 @connect((store) => {
   return {
@@ -74,7 +74,7 @@ class UtilityBar extends Component {
           stopSearching={this.stopSearching}
         />
 
-        <UserFace notifications={this.props.requests} />
+        <NotificationWrapper notifications={this.props.requests} />
       </header>
     );
   }

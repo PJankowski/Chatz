@@ -9,6 +9,17 @@ h4 {
   color: var(--text);
 }
 
+button {
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  color: var(--text);
+  font-size: 1rem;
+  padding: 1em 1.4em;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
 .App {
   display: flex;
   background-color: var(--backgroundColor);

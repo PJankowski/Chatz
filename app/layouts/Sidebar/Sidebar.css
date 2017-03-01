@@ -1,5 +1,6 @@
 .Sidebar {
-  width: 20vw;
+  width: 0;
+  display: none;
   min-width: 250px;
   background-color: var(--outsideColor);
   height: 100vh;
@@ -38,4 +39,11 @@
   color: #fff;
   font-size: 1em;
   letter-spacing: 1px;
+}
+
+@media screen and (min-width: 640px) {
+  .Sidebar {
+    width: 20vw;
+    display: block;
+  }
 }

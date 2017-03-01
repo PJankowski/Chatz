@@ -1,15 +1,12 @@
-button {
+.Button {
   background-color: var(--orange);
-  outline: 0;
-  border: 0;
   color: #fff;
   font-size: 1rem;
   padding: 1rem;
   border-radius: 25px;
-  cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
 
-button:hover {
+.Button:hover {
   background-color: color(var(--orange) b(+ 7%));
 }

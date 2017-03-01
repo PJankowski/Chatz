@@ -1,12 +1,13 @@
 .UtilityBar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 20px;
 }
 
 .UserSearch {
   width: 11%;
+  display: none;
   position: relative;
   transition: width 0.3s ease-in-out;
 
@@ -69,4 +70,14 @@
 .face-wrapper i {
   font-size: 1.8em;
   line-height: 32px;
+}
+
+@media screen and (min-width: 640px) {
+  .UtilityBar {
+    justify-content: space-between;
+  }
+
+  .UserSearch {
+    display: block;
+  }
 }

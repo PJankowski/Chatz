@@ -1,9 +1,13 @@
-.Notification {
+.NotificationWrapper {
+  position: relative;
+}
+
+.NotificationIcon {
   height: 14px;
   width: 14px;
   position: absolute;
-  right: 1%;
-  top: 1%;
+  right: 10%;
+  top: 5%;
   border-radius: 50%;
   background-color: var(--green);
   font-size: 0.8em;
