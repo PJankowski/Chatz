@@ -5,8 +5,8 @@ import IO from 'socket.io-client';
 import { setError, clearError } from '../../actions/ErrorActions';
 import { GetUser } from '../../actions/UserActions';
 
-import LoginForm from '../../components/LoginForm';
-import SignupForm from '../../components/SignupForm';
+import LoginForm from '../LoginForm';
+import SignupForm from '../SignupForm';
 import Sidebar from '../Sidebar';
 import Main from '../Main';
 import Toast from '../../components/Toast';
