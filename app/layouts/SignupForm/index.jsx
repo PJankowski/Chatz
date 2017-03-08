@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { UserSignup } from '../../actions/UserActions';
 
-import Button from '../Button';
+import Button from '../../components/Button';
 
 import './SignupForm.css';
 
