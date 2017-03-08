@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { UserLogin } from '../../actions/UserActions';
 
@@ -35,7 +36,7 @@ class LoginForm extends Component {
           <input type="text" placeholder="Username" ref={(ref) => { this.usernameRef = ref; }} />
           <input type="password" placeholder="Password" ref={(ref) => { this.passwordRef = ref; }} />
           <Button type="submit" text="Login" />
-          <a href="" onClick={this.props.changeAuthForm}>...Or Signup</a>
+          <Link to="/signup">... Or Signup</Link>
         </form>
       </div>
     );
@@ -44,7 +45,6 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   dispatch: PropTypes.func,
-  changeAuthForm: PropTypes.func.isRequired,
 };
 
 LoginForm.defaultProps = {

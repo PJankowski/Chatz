@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { push } from 'react-router-redux';
 import Storage from '../utils/storage';
 
 export function GetUser(token) {
