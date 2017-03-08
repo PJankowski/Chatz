@@ -1,22 +1,68 @@
 .Notifications {
+  display: none;
+  opacity: 0;
   position: absolute;
-  padding: 20px;
   right: 10%;
-  width: 15vw;
+  width: 0;
   top: 100%;
   background-color: #353740;
   border: 2px solid var(--inputBorder);
   border-radius: 7px;
+  max-height: 370px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+  &.isShowing {
+    display: block;
+    opacity: 1;
+    width: 420px;
+  }
+}
+
+.Notifications__Header {
+  padding: 1em;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  background-color: rgba(28, 36, 43, 0.6);
 }
 
 .Notifications__List {
   list-style-type: none;
+  padding: 1em;
+  overflow-y: scroll;
+  max-height: 300px;
 }
 
 .Notifications__List__Item {
-  margin-bottom: 1em;
+  padding: 20px 12px;
+  display: flex;
+  border-bottom: 2px solid rgba(28, 36, 43, 0.6);
+  cursor: pointer;
 
   &:last-of-type {
-    margin-bottom: 0;
+    border: 0;
   }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.Notifications__List__Item__Image {
+  height: 40px;
+  width: 40px;
+  display: block;
+  margin-right: 1em;
+  border-radius: 50%;
+  max-width: 100%;
+}
+
+.Notifications__List__Item__Info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5em;
+  line-height: 1;
+}
+
+.Notifications__List__Item__Info p {
+  font-size: 0.8rem;
 }

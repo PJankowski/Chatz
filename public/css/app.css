@@ -3,11 +3,17 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 body {
+  overflow: hidden;
   font-family: Roboto, Helvetica, sans-serif;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: "Roboto Mono", monospace;
 }
 
@@ -15,6 +21,8 @@ i {
   font-style: normal;
 }
 
-input, button, a {
+input,
+button,
+a {
   outline: 0;
 }

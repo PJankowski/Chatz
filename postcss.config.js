@@ -14,6 +14,7 @@ module.exports = {
             yellow: '#e6c176',
             inputBorder: 'hsla(0, 0%, 100%, 0.2)',
             inputBackground: 'hsla(0, 0%, 100%, 0.06)',
+            highlight: '#e06c75',
           },
         },
       },

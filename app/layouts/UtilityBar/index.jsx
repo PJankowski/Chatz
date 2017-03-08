@@ -22,12 +22,14 @@ class UtilityBar extends Component {
     this.state = {
       users: [],
       isSearching: false,
+      showingNotifications: false,
     };
 
     this.startSearching = this.startSearching.bind(this);
     this.stopSearching = this.stopSearching.bind(this);
     this.searchUsers = this.searchUsers.bind(this);
     this.addFriend = this.addFriend.bind(this);
+    this.showNotifications = this.showNotifications.bind(this);
   }
 
   componentDidMount() {
@@ -62,6 +64,12 @@ class UtilityBar extends Component {
     this.props.socket.emit('user:addFriend', { userId: this.props.user, friendId: id });
   }
 
+  showNotifications() {
+    this.setState({
+      showingNotifications: !this.state.showingNotifications,
+    });
+  }
+
   render() {
     return (
       <header className="UtilityBar">
@@ -74,7 +82,11 @@ class UtilityBar extends Component {
           stopSearching={this.stopSearching}
         />
 
-        <NotificationWrapper notifications={this.props.requests} />
+        <NotificationWrapper
+          notifications={this.props.requests}
+          isShowing={this.state.showingNotifications}
+          showNotifications={this.showNotifications}
+        />
       </header>
     );
   }
