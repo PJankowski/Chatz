@@ -16,6 +16,7 @@ export function GetUser(req, res) {
       } else if (!doc) {
         reject(err);
       } else {
+        console.log(doc);
         resolve(doc);
       }
     });
